@@ -1,0 +1,13 @@
+parameter
+번호.exp/Def/Gold/Max_HP/Str/spd/\n /char arr[32] /char arr[8][5]
+/ 모든 수는 100자리, 1같은 경우, 001로 표기
+
+name
+이름 / char arr[32] 
+/번호 표기 없이 줄 수로 번호를 센다. 
+
+lable 
+레벨.Max_Exp/Max_HP/Max_san/Str/Def/spd/\n char arr[32] / char arr[8][5]
+/ 모든 수는 100자리, 1같은 경우, 001로 표기
+
+maximum은 256 

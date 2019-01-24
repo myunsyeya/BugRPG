@@ -1,8 +1,12 @@
 #pragma once
 #include "common.h"
+
 #include "Menu.h"
 #include "Monster.h"
 #include "Player.h"
+
+int kl;
+int i = 0;
 
 void init()
 {

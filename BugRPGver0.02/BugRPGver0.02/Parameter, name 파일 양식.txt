@@ -1,7 +1,0 @@
-parameter
-번호.exp/AC/Gold/Max_HP/Level/Str/\n /char arr[30] /char arr[8][5]
-/ 모든 수는 100자리, 1같은 경우, 001로 표기
-
-name
-이름 / char arr[32] 
-/번호 표기 없이 줄 수로 번호를 센다. 

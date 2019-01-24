@@ -3,8 +3,6 @@
 int main() {
 	int kl = 0;
 	PLAYER man;
-	PLAYER Lable;
-	PlayerLable(&Lable);
 	init();
 	while (1)
 	{
@@ -12,7 +10,7 @@ int main() {
 		if (kl == 13)
 		{
 			system("cls");
-			MakePlayer(&man, Lable);
+			MakePlayer(&man);
 			return back_graund(&man);
 		}
 		if (kl == 120 || kl == 88)
@@ -21,3 +19,4 @@ int main() {
 		}
 	}
 }
+/*이것이 추가되었다면 성공*/
