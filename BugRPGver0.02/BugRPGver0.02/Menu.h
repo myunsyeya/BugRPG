@@ -57,8 +57,8 @@ void menu(PLAYER* player) {
 			printf("\n 레벨 %d \n", player->PlayerStatus.Level);
 			printf("\n 경험치/최대경험치 %d/%d \n", player->PlayerStatus.Exp, player->PlayerStatus.Max_Exp);
 			printf("\n HP/최대HP %d/%d \n", player->PlayerStatus.HP, player->PlayerStatus.Max_HP);
-			printf("\n SP/최대SP %d/%d \n", player->PlayerStatus.SP, player->PlayerStatus.Max_SP);
-			printf("\n 방어력 %d \n", player->PlayerStatus.AC);
+			printf("\n SP/최대SP %d/%d \n", player->PlayerStatus.San, player->PlayerStatus.Max_San);
+			printf("\n 방어력 %d \n", player->PlayerStatus.Def);
 			printf("\n 힘 %d \n", player->PlayerStatus.Str);
 			printf("\n");
 			while (k)/*메뉴로 돌아가는 소스*/

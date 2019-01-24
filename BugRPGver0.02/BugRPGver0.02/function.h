@@ -4,9 +4,6 @@
 #include "Monster.h"
 #include "Player.h"
 
-int kl;
-int i = 0;
-
 void init()
 {
 	printf("메뉴는 ESC입니다.\n");
