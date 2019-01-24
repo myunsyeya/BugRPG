@@ -1,51 +1,42 @@
 #pragma once
 #define NAME_SIZE 32
 #define maximum 256
-#define ParameterLine 32
 #define Parameternumber 5
 
 typedef struct _tagStatus {
-	int Level;
-	int Max_Exp[maximum];
+	int Max_Exp;
 	int Exp;
-	int Max_HP[maximum];
+	int Max_HP;
 	int HP;
-	int Max_San[maximum];
+	int Max_San;
 	int San;
-	int Str[maximum];
-	int Def[maximum];
-	int Spd[maximum];
+	int Str;
+	int Def;
+	int Spd;
 	int Gold;
 }STATUS;
 
 typedef struct _tagItem{
 	char name[NAME_SIZE];
 	char info[maximum];
-	int Str;
-	int Def;
-	int HP;
-	int san;
+	STATUS ItemStatus;
 }ITEM;
 
 typedef struct _tagSkill {
 	char name[NAME_SIZE];
 	int San;
+	char Index[maximum];
 	int Data;
 }SKILL;
 
 typedef struct _tagPlayer {
 	char name[NAME_SIZE]; 
-	SKILL PlayerSkill;
-	STATUS PlayerStatus;
+	int Level;
+	SKILL PlayerSkill[maximum];
+	STATUS PlayerStatus[maximum];
 }PLAYER;
 
 typedef struct _tagMonster{
 	char name[NAME_SIZE];
-	int Max_HP;
-	int HP;
-	int Str;
-	int Def;
-	int Gold;
-	int Exp;
-	int Spd;
+	STATUS MonsterStatus;
 }MONSTER;

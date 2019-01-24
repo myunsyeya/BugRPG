@@ -1,4 +1,4 @@
-#include "function.h"
+#include "Function.h"
 
 int main() {
 	int kl = 0;
@@ -12,7 +12,7 @@ int main() {
 		if (kl == 13)
 		{
 			system("cls");
-			MakePlayer(&man, Lable);
+			MakePlayer(&man, &Lable);
 			return back_graund(&man);
 		}
 		if (kl == 120 || kl == 88)

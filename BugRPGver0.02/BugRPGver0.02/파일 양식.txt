@@ -10,4 +10,18 @@ lable
 레벨.Max_Exp/Max_HP/Max_san/Str/Def/spd/\n char arr[32] / char arr[8][5]
 / 모든 수는 100자리, 1같은 경우, 001로 표기
 
+SkillList
+이름 / char arr[32]
+San소모치 int 
+스킬 설명 / char arr[64]*4 256자까지 허용
+스킬 계산식 / char [64] 64자까지 허용 정수형으로 후에 변환 /char arr[64][7]
+
+ItemList
+이름 / char arr[32]
+수치	//Hp
+	//San
+	//Str
+	//Def
+아이템 설명 // char arr[64]*4 256자까지 허용 /char arr[64][9]
+
 maximum은 256 

@@ -1,16 +1,16 @@
 #pragma once
-#include "common.h"
+#include "Common.h"
 
-void MonsterInitialParameter(int count, MONSTER* monster[], char monstername[], int Exp, int Def, int Gold, int Max_HP, int Str, int Spd) {
+void MonsterInitialParameter(int count, MONSTER* monster, char* monstername, int Exp, int Def, int Gold, int Max_HP, int Str, int Spd) {
 	for (int i = 0; i < count; i++) {
-		strcpy_s(monster[i]->name, 32, monstername);
-		monster[i]->Exp = Exp;
-		monster[i]->Def = Def;
-		monster[i]->Gold = Gold;
-		monster[i]->Max_HP = Max_HP;
-		monster[i]->HP = Max_HP;
-		monster[i]->Str = Str;
-		monster[i]->Spd = Spd;
+		strcpy_s(monster[i].name, NAME_SIZE, monstername);
+		monster[i].MonsterStatus.Exp = Exp;
+		monster[i].MonsterStatus.Def = Def;
+		monster[i].MonsterStatus.Gold = Gold;
+		monster[i].MonsterStatus.Max_HP = Max_HP;
+		monster[i].MonsterStatus.HP = Max_HP;
+		monster[i].MonsterStatus.Str = Str;
+		monster[i].MonsterStatus.Spd = Spd;
 	}
 }
 
@@ -34,18 +34,19 @@ void MonsterParameterFile(MONSTER* MonsterList) {
 	FILE* monsterfile = NULL;
 	errno_t err = fopen_s(&monsterfile, "MonsterParameterFile.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
-	char number[Parameternumber];
+	char line[Parameternumber];
 	int i = 0;
-	while (fgets(number, sizeof(number), monsterfile) != NULL) {
-		int n = i / 8;
+	int n = 0;
+	while (fgets(line, sizeof(line), monsterfile) != NULL) {
 		switch (i % 8) {
-		case 1: MonsterList[n].Exp = atoi(number); break;
-		case 2: MonsterList[n].Def = atoi(number); break;
-		case 3: MonsterList[n].Gold = atoi(number); break;
-		case 4: MonsterList[n].Max_HP = atoi(number); break;
-		case 5: MonsterList[n].Str = atoi(number); break;
-		case 6: MonsterList[n].Spd = atoi(number); break;
-		Default: break;
+		case 0: n = i / 8;
+		case 1: MonsterList[n].MonsterStatus.Exp = atoi(line); break;
+		case 2: MonsterList[n].MonsterStatus.Def = atoi(line); break;
+		case 3: MonsterList[n].MonsterStatus.Gold = atoi(line); break;
+		case 4: MonsterList[n].MonsterStatus.Max_HP = atoi(line); break;
+		case 5: MonsterList[n].MonsterStatus.Str = atoi(line); break;
+		case 6: MonsterList[n].MonsterStatus.Spd = atoi(line); break;
+		default: break;
 		}
 		i++;
 	}
@@ -57,15 +58,9 @@ void MonsterList(MONSTER* MonsterList) {
 	MonsterParameterFile(MonsterList);
 }
 
-void MonsterMake(MONSTER* Monster[], MONSTER* MonsterList, int line, int count) {
+void MonsterMake(MONSTER* Monster, MONSTER* MonsterList, int line, int count) {
 	for (int i = 0; i < count; i++) {
-		strcpy_s(Monster[i]->name, NAME_SIZE, MonsterList[line].name);
-		Monster[i]->Exp = MonsterList[line].Exp;
-		Monster[i]->Def = MonsterList[line].Def;
-		Monster[i]->Gold = MonsterList[line].Gold;
-		Monster[i]->Max_HP = MonsterList[line].HP;
-		Monster[i]->HP = Monster[i]->Max_HP;
-		Monster[i]->Str = MonsterList[line].Str;
-		Monster[i]->Spd = MonsterList[line].Spd;
+		Monster[i] = MonsterList[line];
+		Monster[i].MonsterStatus.HP = Monster[i].MonsterStatus.Max_HP;
 	}
 }

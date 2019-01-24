@@ -1,5 +1,5 @@
 #pragma once
-#include "common.h"
+#include "Common.h"
 
 void MakePlayerName(PLAYER* player) {
 	char input[32];
@@ -15,39 +15,35 @@ void PlayerLable(PLAYER* Lable) {
 	errno_t err = fopen_s(&Data, "PlayerLable.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
 	int count = 0;
-	char number[Parameternumber];
+	char line[Parameternumber];
 	int i = 0;
 	int level = 0;
-	while (fgets(number, sizeof(number), Data) != NULL) {
+	while (fgets(line, sizeof(line), Data) != NULL) {
 		switch (i % 8) {
 		case 0: level = i / 8 + 1;
-		case 1: Lable->PlayerStatus.Max_Exp[level] = atoi(number); break;
-		case 2: Lable->PlayerStatus.Max_HP[level] = atoi(number); break;
-		case 3: Lable->PlayerStatus.Max_San[level] = atoi(number); break;
-		case 4: Lable->PlayerStatus.Str[level]= atoi(number); break;
-		case 5: Lable->PlayerStatus.Def[level]= atoi(number); break;
-		case 6: Lable->PlayerStatus.Spd[level]= atoi(number); break;
-		Default: break;
+		case 1: Lable->PlayerStatus[level].Max_Exp = atoi(line); break;
+		case 2: Lable->PlayerStatus[level].Max_HP = atoi(line); break;
+		case 3: Lable->PlayerStatus[level].Max_San = atoi(line); break;
+		case 4: Lable->PlayerStatus[level].Str= atoi(line); break;
+		case 5: Lable->PlayerStatus[level].Def= atoi(line); break;
+		case 6: Lable->PlayerStatus[level].Spd= atoi(line); break;
+		default: break;
 		}
 		i++;
 	}
 	fclose(Data);
 }
 
-void PlayerStatusByLevel(PLAYER* player, PLAYER Lable, int level) {
-	player->PlayerStatus.Level = level;
-	player->PlayerStatus.Max_Exp[level] = Lable.PlayerStatus.Max_Exp[level];
-	player->PlayerStatus.Exp = player->PlayerStatus.Max_Exp[level];
-	player->PlayerStatus.Max_HP[level] = Lable.PlayerStatus.Max_HP[level];
-	player->PlayerStatus.HP = player->PlayerStatus.Max_HP[level];
-	player->PlayerStatus.Max_San[level] = Lable.PlayerStatus.Max_San[level];
-	player->PlayerStatus.San = player->PlayerStatus.Max_San[level];
-	player->PlayerStatus.Str[level] = Lable.PlayerStatus.Str[level];
-	player->PlayerStatus.Def[level] = Lable.PlayerStatus.Def[level];
-	player->PlayerStatus.Spd[level] = Lable.PlayerStatus.Spd[level];
+void PlayerStatusByLevel(PLAYER* player, PLAYER* Lable, int level) {
+	player->Level = level;
+	player->PlayerStatus[level] = Lable->PlayerStatus[level];
+	player->PlayerStatus[level].Exp = player->PlayerStatus[level].Max_Exp;
+	player->PlayerStatus[level].HP = player->PlayerStatus[level].Max_HP;
+	player->PlayerStatus[level].San = player->PlayerStatus[level].Max_San;
 }
-void MakePlayer(PLAYER* player, PLAYER Lable) {
+
+void MakePlayer(PLAYER* player, PLAYER* Lable) {
 	MakePlayerName(player);
-	int level = 1;
-	PlayerStatusByLevel(player, Lable, level);
+	PlayerStatusByLevel(player, Lable, 1);
+	player->PlayerStatus[1].Gold = 0;
 }

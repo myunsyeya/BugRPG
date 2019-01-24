@@ -1,5 +1,5 @@
 #pragma once
-#include "common.h"
+#include "Common.h"
 
 int back_graund(PLAYER* player);
 void menu(PLAYER* player); 
@@ -11,7 +11,7 @@ int back_graund(PLAYER* player) {
 	{
 		menu(player);
 	}
-	if (player->PlayerStatus.HP == 0)
+	if (player->PlayerStatus[player->Level].HP == 0)
 	{
 		return 0;
 	}
@@ -20,6 +20,7 @@ int back_graund(PLAYER* player) {
 		return back_graund(player);
 	}
 }
+
 void menu(PLAYER* player) {
 	system("cls");
 	int kl;
@@ -35,7 +36,7 @@ void menu(PLAYER* player) {
 		case 49: /*숫자1*/
 			printf("\n");
 			printf("\n 아이템\n\n");
-			printf("\n 골드 %d\n", player->PlayerStatus.Gold);
+			printf("\n 골드 %d\n", player->PlayerStatus[player->Level].Gold);
 			printf("\n");
 			while (k)/*메뉴로 돌아가는 소스*/
 			{
@@ -54,12 +55,13 @@ void menu(PLAYER* player) {
 			printf("\n");
 			printf("\n %s의 스텟\n\n", player->name);
 			printf("\n 이름: %s \n", player->name);
-			printf("\n 레벨 %d \n", player->PlayerStatus.Level);
-			printf("\n 경험치/최대경험치 %d/%d \n", player->PlayerStatus.Exp, player->PlayerStatus.Max_Exp);
-			printf("\n HP/최대HP %d/%d \n", player->PlayerStatus.HP, player->PlayerStatus.Max_HP);
-			printf("\n SP/최대SP %d/%d \n", player->PlayerStatus.San, player->PlayerStatus.Max_San);
-			printf("\n 방어력 %d \n", player->PlayerStatus.Def);
-			printf("\n 힘 %d \n", player->PlayerStatus.Str);
+			printf("\n 레벨 %d \n", player->Level);
+			printf("\n 경험치/최대경험치 %d/%d \n", player->PlayerStatus[player->Level].Exp, player->PlayerStatus[player->Level].Max_Exp);
+			printf("\n HP/최대HP %d/%d \n", player->PlayerStatus[player->Level].HP, player->PlayerStatus[player->Level].Max_HP);
+			printf("\n SP/최대SP %d/%d \n", player->PlayerStatus[player->Level].San, player->PlayerStatus[player->Level].Max_San);
+			printf("\n 방어력 %d \n", player->PlayerStatus[player->Level].Def);
+			printf("\n 힘 %d \n", player->PlayerStatus[player->Level].Str);
+			printf("\n 속도 %d \n", player->PlayerStatus[player->Level].Spd);
 			printf("\n");
 			while (k)/*메뉴로 돌아가는 소스*/
 			{
