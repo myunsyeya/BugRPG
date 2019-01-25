@@ -25,7 +25,7 @@ void menu(PLAYER* player) {
 	system("cls");
 	int kl;
 	int k = 1;
-	printf(" 1 . 아이템 \n 2 . 스탯 \n 3. 스킬 \n 4. 상점 \n ESC . 나가기");
+	printf(" 1 . 아이템 \n 2 . 스탯 \n 3. 스킬 \n ESC . 나가기");
 	while (k)
 	{
 
@@ -79,23 +79,6 @@ void menu(PLAYER* player) {
 		case 51:/*숫자3*/
 			printf("\n");
 			printf("\n 스킬\n");
-			printf("\n");
-			while (k)/*메뉴로 돌아가는 소스*/
-			{
-				kl = _getch();
-				switch (kl)
-				{
-				case 27:
-					system("cls");
-					menu(player);
-				default:
-					break;
-				}
-			}
-			break;
-		case 52:/*숫자4*/
-			printf("\n");
-			printf("\n 상점\n");
 			printf("\n");
 			while (k)/*메뉴로 돌아가는 소스*/
 			{
