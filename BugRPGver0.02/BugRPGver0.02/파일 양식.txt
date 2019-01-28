@@ -14,7 +14,8 @@ SkillList
 이름 / char arr[32]
 San소모치 int 
 스킬 설명 / char arr[64]*4 256자까지 허용
-스킬 계산식 / char [64] 64자까지 허용 정수형으로 후에 변환 /char arr[64][7]
+스킬 계수
+스킬 적용 넘버
 
 ItemList
 이름 / char arr[32]

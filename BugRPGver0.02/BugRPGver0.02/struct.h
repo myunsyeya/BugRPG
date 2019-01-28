@@ -3,6 +3,10 @@
 #define maximum 256
 #define Parameternumber 5
 
+enum BOOL {
+	off, on
+};
+
 typedef struct _tagStatus {
 	int Max_Exp;
 	int Exp;
@@ -27,13 +31,14 @@ typedef struct _tagSkill {
 	int San;
 	char Index[maximum];
 	int Data;
+	int sn;
 }SKILL;
 
 typedef struct _tagPlayer {
 	char name[NAME_SIZE]; 
 	int Level;
-	SKILL PlayerSkill[maximum];
-	STATUS PlayerStatus[maximum];
+	SKILL PlayerSkill[12];
+	STATUS PlayerStatus[12];
 }PLAYER;
 
 typedef struct _tagMonster{
