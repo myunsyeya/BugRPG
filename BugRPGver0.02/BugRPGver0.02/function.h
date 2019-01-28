@@ -6,6 +6,25 @@
 #include "SKill.h"
 #include "Item.h"
 
+/*int back_graund(PLAYER* player);*/
+
+int back_graund(PLAYER* player) {
+	int  kl = 0;
+	kl = _getch();
+	if (kl == 27)
+	{
+		menu(player);
+	}
+	if (player->PlayerStatus[player->Level].HP == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return back_graund(player);
+	}
+}
+
 void init()
 {
 	printf("메뉴는 ESC입니다.\n");
