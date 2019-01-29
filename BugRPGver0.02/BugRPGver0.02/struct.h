@@ -3,10 +3,6 @@
 #define maximum 256
 #define Parameternumber 5
 
-enum BOOL {
-	off, on
-};
-
 typedef struct _tagStatus {
 	int Max_Exp;
 	int Exp;
