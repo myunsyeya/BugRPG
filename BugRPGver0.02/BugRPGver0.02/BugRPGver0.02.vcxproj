@@ -123,6 +123,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="monsterSkill.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Struct.h" />

@@ -2,11 +2,12 @@
 #include "Common.h"
 
 int back_graund(PLAYER* player);
-void menu(PLAYER* player); 
+void menu(PLAYER* player);
 
 int back_graund(PLAYER* player) {
 	int  kl = 0;
 	kl = _getch();
+	system("cls");
 	if (kl == 27)
 	{
 		menu(player);
@@ -96,7 +97,9 @@ void menu(PLAYER* player) {
 		case 27:/*ESCŰ*/
 			system("cls");
 			k = 0;
+			back_graund(player);
 		default:
+			menu(player);
 			break;
 		}
 	}
