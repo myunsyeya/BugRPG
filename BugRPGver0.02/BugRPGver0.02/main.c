@@ -3,9 +3,7 @@
 int main() {
 	int kl = 0;
 	PLAYER man;
-
 	srand((unsigned int)time(NULL));
-
 	memset(&man, 0, sizeof(man));
 	PLAYER Lable;
 	memset(&Lable, 0, sizeof(man));
@@ -22,7 +20,7 @@ int main() {
 		}
 		if (kl == 120 || kl == 88)
 		{
-			return 0;
+			break;
 		}
 	}
 	return 0;

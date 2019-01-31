@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 #include <conio.h>
-#include "Struct.h"
+
+//0 벽 : '■'
+//1 길 : '  '
+//2 몬스터 스폰장소 : '  '
+//4 
