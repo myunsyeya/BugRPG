@@ -35,6 +35,7 @@ typedef struct _tagPlayer {
 	int Level;
 	SKILL PlayerSkill[12];
 	STATUS PlayerStatus[12];
+	STATUS AddStatus;
 }PLAYER;
 
 typedef struct _tagMonster{

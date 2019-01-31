@@ -115,9 +115,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="battle.c" />
+    <ClCompile Include="Function.c" />
+    <ClCompile Include="Item.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Menu.c" />
+    <ClCompile Include="Monster.c" />
+    <ClCompile Include="Player.c" />
+    <ClCompile Include="Skill.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="battle.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Item.h" />

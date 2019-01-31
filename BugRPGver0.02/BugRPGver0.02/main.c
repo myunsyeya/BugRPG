@@ -3,7 +3,12 @@
 int main() {
 	int kl = 0;
 	PLAYER man;
+
+	srand((unsigned int)time(NULL));
+
+	memset(&man, 0, sizeof(man));
 	PLAYER Lable;
+	memset(&Lable, 0, sizeof(man));
 	PlayerLable(&Lable);
 	init();
 	while (1)
@@ -20,4 +25,5 @@ int main() {
 			return 0;
 		}
 	}
+	return 0;
 }
