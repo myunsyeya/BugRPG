@@ -65,7 +65,11 @@
     <ClInclude Include="Item.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="battle.h">
+=======
+    <ClInclude Include="monsterSkill.h">
+>>>>>>> 3e99b88efc2c4fb4bd164d447e3bfe19f45b4ed2
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
