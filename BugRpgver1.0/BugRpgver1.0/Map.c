@@ -4,17 +4,14 @@ void MakeMap(char map[MAP_SIZE][MAP_SIZE])
 {
 	FILE* pfile = NULL;
 	fopen_s(&pfile, "map.txt", "r");
-
 	if (pfile == NULL)
 	{
 		fprintf(stderr, "fopen_s error\n");
 		exit(1);
 	}
-
 	int i = 0;
 	int j = 0;
 	char temp;
-
 	while (!feof(pfile))
 	{
 		if ((temp = fgetc(pfile)) != '\n')
@@ -28,10 +25,8 @@ void MakeMap(char map[MAP_SIZE][MAP_SIZE])
 			j = 0;
 		}
 	}
-
 	fclose(pfile);
 }
-
 
 void PrintMapTotal(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 {
@@ -55,11 +50,9 @@ void PrintMapTotal(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 
 void PrintMapByPlayer(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 {
-
-
-	for (int i = playerpos.y - 5; i < playerpos.y + 5; i++)
+	for (int i = playerpos.y - 7; i < playerpos.y + 7; i++)
 	{
-		for (int j = playerpos.x - 5; j < playerpos.x + 5; j++)
+		for (int j = playerpos.x - 7; j < playerpos.x + 7; j++)
 		{
 			if (i == playerpos.y && j == playerpos.x)		// 플레이어
 				printf("▽");
@@ -79,7 +72,6 @@ void PrintMapByPlayer(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 void MoveMap(char map[MAP_SIZE][MAP_SIZE], POS* playerpos)
 {
 	char input = _getch();
-
 	switch (input)
 	{
 	case 'w':
@@ -98,7 +90,7 @@ void MoveMap(char map[MAP_SIZE][MAP_SIZE], POS* playerpos)
 		if (map[playerpos->y][playerpos->x + 1] != '0')
 			playerpos->x++;
 		break;
-	case 'x':									// 전채맵 확인
+	case 'x':									// 전체맵 확인
 		system("cls");
 		PrintMapTotal(map, *playerpos);
 	default:

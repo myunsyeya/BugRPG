@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{DC9DCF6E-9F02-4EB6-B5C9-831C442CF175}</ProjectGuid>
-    <RootNamespace>BugRpgver091</RootNamespace>
+    <ProjectGuid>{C7602AE9-4720-4D03-9629-74D46B4A1E5D}</ProjectGuid>
+    <RootNamespace>BugRpgver10</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,6 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="ItemList.txt" />
+    <Text Include="map.txt" />
+    <Text Include="MonsterNamefile.txt" />
+    <Text Include="MonsterParameterFile.txt" />
+    <Text Include="PlayerLable.txt" />
+    <Text Include="SkillList.txt.txt" />
+    <Text Include="파일 양식.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="Battle.c" />
     <ClCompile Include="Function.c" />
     <ClCompile Include="Item.c" />
@@ -136,15 +145,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Struct.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ItemList.txt" />
-    <Text Include="map.txt" />
-    <Text Include="MonsterNamefile.txt" />
-    <Text Include="MonsterParameterFile.txt" />
-    <Text Include="PlayerLable.txt" />
-    <Text Include="SkillList.txt.txt" />
-    <Text Include="파일 양식.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

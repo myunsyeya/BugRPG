@@ -9,7 +9,7 @@ void MakePlayerName(PLAYER* player) {
 	system("cls");
 }
 
-void PlayerLable(PLAYER* Lable) {
+void MakePlayerLable(PLAYER* Lable) {
 	FILE* Data = NULL;
 	errno_t err = fopen_s(&Data, "PlayerLable.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
@@ -33,15 +33,15 @@ void PlayerLable(PLAYER* Lable) {
 	fclose(Data);
 }
 
-void PlayerStatusByLevel(PLAYER* player, PLAYER* Lable, int level) {
+void PlayerStatusByLevel(PLAYER* player, PLAYER Lable, int level) {
 	player->Level = level;
-	player->PlayerStatus[level] = Lable->PlayerStatus[level];
-	player->PlayerStatus[level].Exp = player->PlayerStatus[level].Max_Exp;
+	player->PlayerStatus[level] = Lable.PlayerStatus[level];
+	player->PlayerStatus[level].Exp = 0;
 	player->PlayerStatus[level].HP = player->PlayerStatus[level].Max_HP;
 	player->PlayerStatus[level].San = player->PlayerStatus[level].Max_San;
 }
 
-void MakePlayer(PLAYER* player, PLAYER* Lable) {
+void MakePlayer(PLAYER* player, PLAYER Lable) {
 	MakePlayerName(player);
 	PlayerStatusByLevel(player, Lable, 1);
 	player->PlayerStatus[1].Gold = 0;
@@ -56,10 +56,20 @@ void AddStatusSave(PLAYER* player, PLAYER* addstatus, PLAYER Lable) {
 }
 
 void AddStatusApply(PLAYER* player, PLAYER* addstatus) {
-	player->PlayerStatus[player->Level].Str = addstatus->PlayerStatus[player->Level].Str;
-	player->PlayerStatus[player->Level].Def = addstatus->PlayerStatus[player->Level].Def;
-	player->PlayerStatus[player->Level].Spd = addstatus->PlayerStatus[player->Level].Spd;
-	player->PlayerStatus[player->Level].Max_HP = addstatus->PlayerStatus[player->Level].Max_HP;
-	player->PlayerStatus[player->Level].Max_San = addstatus->PlayerStatus[player->Level].Max_San;
-	memset(addstatus, 0, sizeof(addstatus));
+	player->addStatus.Str = addstatus->PlayerStatus[player->Level].Str;
+	player->addStatus.Def = addstatus->PlayerStatus[player->Level].Def;
+	player->addStatus.Spd = addstatus->PlayerStatus[player->Level].Spd;
+	player->addStatus.Max_HP = addstatus->PlayerStatus[player->Level].Max_HP;
+	player->addStatus.Max_San = addstatus->PlayerStatus[player->Level].Max_San;
+	memset(&addstatus, 0, sizeof(addstatus));
+}
+
+void CheckStatus(PLAYER* player, PLAYER Lable) {
+	player->PlayerStatus[player->Level] = Lable.PlayerStatus[player->Level];
+	player->PlayerStatus[player->Level].Str += player->addStatus.Str;
+	player->PlayerStatus[player->Level].Def += player->addStatus.Def;
+	player->PlayerStatus[player->Level].Spd += player->addStatus.Spd;
+	player->PlayerStatus[player->Level].Max_HP += player->addStatus.Max_HP;
+	player->PlayerStatus[player->Level].Max_San += player->addStatus.Max_San;
+	memset(&player->addStatus, 0, sizeof(player->addStatus));
 }

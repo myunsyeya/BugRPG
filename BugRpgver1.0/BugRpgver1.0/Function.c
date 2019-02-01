@@ -16,18 +16,17 @@ void init()
 	printf("\t\t\t\t\t      나가시려면 X를 눌러주세요.");
 }
 
-int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE]) {
+int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], int life) {
 	system("cls");
 	PrintMapByPlayer(map, *playerpos);
-	MoveMap(map, playerpos);
-	switch (KI) {
+	switch (KI) {                                      //입력 스위치
 	case 27:                                           //메뉴
 		while (menu(player)); break;
 	case 119:                                          //플레이어 이동 'w' 전
 		if (map[playerpos->y - 1][playerpos->x] != '0')
 			playerpos->y--;
 		break;
-	case 97:                                          //              'a' 좌
+	case 97:                                          //               'a' 좌
 		if (map[playerpos->y][playerpos->x - 1] != '0')
 			playerpos->x--;
 		break;
@@ -44,10 +43,19 @@ int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE]) {
 		PrintMapTotal(map, *playerpos);
 	default: break;
 	}
-	if (player->PlayerStatus[player->Level].HP == 0) { //죽음
-		system("cls");
-		puts("사망하셨습니다. x를 눌러 조의를 표하십시오.");
-		if (KI == 120 || KI == 88) return 0;
+	return life;
+}
+
+void battle_ground(PLAYER* player, PLAYER lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, int* life) {
+	if (map[playerpos->y][playerpos->x] == '2' && rand() % 50 == 2) {
+		MakeMonster(&monster, list, player->Level);
+		printf("이런, %s가 나타났다.", monster.name);
+		while (KI != 13);
+		while (battle_status(player, lable, &monster, life)){
+			if (*life == 2) {
+				*life = 1;
+				break;
+			}
+		}
 	}
-	return back_graund(player, playerpos, map);
 }
