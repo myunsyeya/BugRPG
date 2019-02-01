@@ -5,5 +5,8 @@
 #include "Player.h"
 #include "SKill.h"
 #include "Item.h"
+#include "Battle.h"
+#include "Map.h"
 
 void init();
+int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE]);

@@ -1,7 +1,8 @@
 #pragma once
 #define NAME_SIZE 32
-#define maximum 256
-#define Parameternumber 5
+#define MAP_SIZE 64
+#define MAXIMUM 256
+#define KI (char)_getch()
 
 typedef struct _tagStatus {
 	int Max_Exp;
@@ -18,16 +19,16 @@ typedef struct _tagStatus {
 
 typedef struct _tagItem{
 	char name[NAME_SIZE];
-	char info[maximum];
+	char info[MAXIMUM];
+	int Data;
 	STATUS ItemStatus;
 }ITEM;
 
 typedef struct _tagSkill {
 	char name[NAME_SIZE];
+	char Index[MAXIMUM];
 	int San;
-	char Index[maximum];
 	int Data;
-	int sn;
 }SKILL;
 
 typedef struct _tagPlayer {
@@ -35,10 +36,16 @@ typedef struct _tagPlayer {
 	int Level;
 	SKILL PlayerSkill[12];
 	STATUS PlayerStatus[12];
-	STATUS AddStatus;
+	STATUS addStatus;
 }PLAYER;
 
 typedef struct _tagMonster{
 	char name[NAME_SIZE];
+	SKILL MonsterSkill;
 	STATUS MonsterStatus;
 }MONSTER;
+
+typedef struct position{
+	int x;
+	int y;
+}POS;

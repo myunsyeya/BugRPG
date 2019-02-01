@@ -33,7 +33,7 @@ void MonsterParameterFile(MONSTER* MonsterList) {
 	FILE* monsterfile = NULL;
 	errno_t err = fopen_s(&monsterfile, "MonsterParameterFile.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
-	char line[Parameternumber];
+	char line[5];
 	int i = 0;
 	int n = 0;
 	while (fgets(line, sizeof(line), monsterfile) != NULL) {

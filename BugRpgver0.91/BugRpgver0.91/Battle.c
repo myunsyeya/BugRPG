@@ -1,12 +1,8 @@
-#include "battle.h"
-
-
+#include "Battle.h"
 
 void PlayerHitBySkill(PLAYER* player, MONSTER* monster)
 {
-	int input = _getch();
-
-	switch (input)
+	switch (KI)
 	{
 	case 1:
 		monster->MonsterStatus.HP -= player->PlayerStatus[player->Level].Str * player->PlayerSkill[0].Data;
@@ -27,9 +23,7 @@ void PlayerHitByStr(PLAYER* player, MONSTER* monster)
 
 void PlayerHit(PLAYER * player, MONSTER * monster)
 {
-	int input = _getch();
-
-	switch (input)
+	switch (KI)
 	{
 	case 1:
 		PlayerHitByStr(player, monster);
@@ -61,7 +55,7 @@ int CheckHP(PLAYER* player, MONSTER* monster)
 		return 1;
 	else if (monster->MonsterStatus.HP <= 0)
 		return 2;
-	return NULL;
+	return 0;
 }
 
 void GiveExp(PLAYER* player, int exp)
@@ -135,9 +129,7 @@ void BattlebyCheckSpd(PLAYER * player, MONSTER * monster)
 		}
 		if (Check == 1)
 		{
-			DieExp(&player);
+			DieExp(player);
 		}
 	}
 }
-
-

@@ -35,11 +35,11 @@ void MakeMap(char map[MAP_SIZE][MAP_SIZE])
 
 void PrintMapTotal(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 {
-	for (int i = 0; i < MAP_SIZE; i++)
+	for (int j = 0; j < MAP_SIZE; j++)
 	{
-		for (int j = 0; j < MAP_SIZE; j++)
+		for (int i = 0; i < MAP_SIZE; i++)
 		{
-			if (i == playerpos.y && j == playerpos.x)
+			if (i == playerpos.x && j == playerpos.y)
 				printf("¡ä");
 			else if (map[j][i] == '1')						// ±æ
 				printf("  ");
@@ -104,36 +104,4 @@ void MoveMap(char map[MAP_SIZE][MAP_SIZE], POS* playerpos)
 	default:
 		break;
 	}
-
-	return;
-}
-
-void MoveMapByTemp(char map[MAP_SIZE][MAP_SIZE], POS* player)
-{
-	POS temp = *player;
-
-	char input = _getch();
-
-	switch (input)
-	{
-	case 'w':
-		temp.y--;
-		break;
-	case 's':
-		temp.y++;
-		break;
-	case 'd':
-		temp.x++;
-		break;
-	case 'a':
-		temp.x--;
-		break;
-	default:
-		PrintMapTotal(map, *player);
-		break;
-	}
-	
-	if (map[temp.y][temp.x] != '0')
-		*player = temp;
-
 }

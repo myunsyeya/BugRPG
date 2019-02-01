@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Common.h"
-
 
 void PlayerHit(PLAYER* player, MONSTER* monster);
 void MonsterHit(PLAYER* player, MONSTER* monster);

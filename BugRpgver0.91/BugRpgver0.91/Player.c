@@ -14,7 +14,7 @@ void PlayerLable(PLAYER* Lable) {
 	errno_t err = fopen_s(&Data, "PlayerLable.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
 	int count = 0;
-	char line[Parameternumber];
+	char line[5];
 	int i = 0;
 	int level = 0;
 	while (fgets(line, sizeof(line), Data) != NULL) {
@@ -45,4 +45,21 @@ void MakePlayer(PLAYER* player, PLAYER* Lable) {
 	MakePlayerName(player);
 	PlayerStatusByLevel(player, Lable, 1);
 	player->PlayerStatus[1].Gold = 0;
+}
+
+void AddStatusSave(PLAYER* player, PLAYER* addstatus, PLAYER Lable) {
+	addstatus->PlayerStatus[player->Level].Str = player->PlayerStatus[player->Level].Str - Lable.PlayerStatus[player->Level].Str;
+	addstatus->PlayerStatus[player->Level].Def = player->PlayerStatus[player->Level].Def - Lable.PlayerStatus[player->Level].Def;
+	addstatus->PlayerStatus[player->Level].Spd = player->PlayerStatus[player->Level].Spd - Lable.PlayerStatus[player->Level].Spd;
+	addstatus->PlayerStatus[player->Level].Max_HP = player->PlayerStatus[player->Level].Max_HP - Lable.PlayerStatus[player->Level].Max_HP;
+	addstatus->PlayerStatus[player->Level].Max_San = player->PlayerStatus[player->Level].Max_San - Lable.PlayerStatus[player->Level].Max_San;
+}
+
+void AddStatusApply(PLAYER* player, PLAYER* addstatus) {
+	player->PlayerStatus[player->Level].Str = addstatus->PlayerStatus[player->Level].Str;
+	player->PlayerStatus[player->Level].Def = addstatus->PlayerStatus[player->Level].Def;
+	player->PlayerStatus[player->Level].Spd = addstatus->PlayerStatus[player->Level].Spd;
+	player->PlayerStatus[player->Level].Max_HP = addstatus->PlayerStatus[player->Level].Max_HP;
+	player->PlayerStatus[player->Level].Max_San = addstatus->PlayerStatus[player->Level].Max_San;
+	memset(addstatus, 0, sizeof(addstatus));
 }

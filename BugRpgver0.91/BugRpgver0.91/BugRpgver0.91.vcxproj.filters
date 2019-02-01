@@ -15,32 +15,44 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Skill.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Function.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Item.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="battle.c">
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -56,21 +68,34 @@
     <ClInclude Include="Struct.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Function.h">
+    <ClInclude Include="Battle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Common.h">
+    <ClInclude Include="Map.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="battle.h">
-=======
-    <ClInclude Include="monsterSkill.h">
->>>>>>> 3e99b88efc2c4fb4bd164d447e3bfe19f45b4ed2
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="파일 양식.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="ItemList.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="MonsterNamefile.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="MonsterParameterFile.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="PlayerLable.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="SkillList.txt.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
+    <Text Include="map.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
 </Project>

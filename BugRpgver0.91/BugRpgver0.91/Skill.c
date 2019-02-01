@@ -16,7 +16,6 @@ void MakeSkillList(SKILL* SkillList) {
 			SkillList[count].name[i - 1] = (char)NULL; break;
 		case 1: SkillList->San = atoi(line); break;
 		case 6: SkillList->Data = atoi(line); break;
-		case 7: SkillList->sn = atoi(line); break;
 		default:
 			for (int j = 0; line[j]; j++) { SkillList[count].Index[j] = line[j]; i++; }
 			SkillList[count].Index[i - 1] = (char)NULL; i--;  break;
