@@ -11,4 +11,4 @@ void LevelUP(PLAYER* player, PLAYER Lable);
 int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster);
 int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life);
 void battlestatus(PLAYER* player, MONSTER* monster);
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life);
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count);

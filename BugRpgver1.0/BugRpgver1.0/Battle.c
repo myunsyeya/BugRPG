@@ -102,10 +102,8 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 	if (player->PlayerStatus[player->Level].Spd < monster->MonsterStatus.Spd) {
 		puts("칫, 선공을 받았다.");
-		while (KI != 13);
 		MonsterHit(player, monster);
 		printf("%s로부터 %d의 대미지!\n", monster->name, monster->MonsterStatus.Str);
-		while (KI != 13);
 		*life = CheckWinner(player, Lable, monster);
 		switch (*life)
 		{
@@ -125,10 +123,8 @@ int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 	}
 	else {
 		puts("캇.. 벌레녀석 이정도 밖에 안되나.");
-		while (KI != 13);
 		PlayerHit(player, monster);
 		printf("%s에게 %d의 대미지를 주었다.\n", monster->name, player->PlayerStatus[player->Level].Str);
-		while (KI != 13);
 		*life = CheckWinner(player, Lable, monster);
 		switch (*life)
 		{
@@ -165,7 +161,7 @@ void battlestatus(PLAYER* player, MONSTER* monster) {
 	printf(" 1 . 공격 \n 2 . 스킬 \n 3. 아이템 \n ESC . 도망");
 }
 
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count) {
 	battlestatus(player, monster);
 	int i = 0;
 	switch (KI) {
@@ -185,6 +181,9 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 		system("cls");
 		return 0;
 	}
-	if (i == 1) while (KI != 13);/*턴 개념 Enter*/
+	if (i == 1) {                                                                /*턴 개념 Enter*/
+		(*count)++;
+		while (KI != 13) printf("\n%d turn", *count);
+	}
 	return *life;
 }

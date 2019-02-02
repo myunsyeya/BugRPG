@@ -51,7 +51,8 @@ void battle_ground(PLAYER* player, PLAYER lable, POS* playerpos, char map[MAP_SI
 		MakeMonster(&monster, list, player->Level);
 		printf("이런, %s가 나타났다.", monster.name);
 		while (KI != 13);
-		while (battle_status(player, lable, &monster, life)){
+		int count = 0;
+		while (battle_status(player, lable, &monster, life, &count)){
 			if (*life == 2) {
 				*life = 1;
 				break;
