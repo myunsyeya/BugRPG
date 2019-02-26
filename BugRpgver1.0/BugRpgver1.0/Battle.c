@@ -42,30 +42,27 @@ void DiePlayer(PLAYER* player)                                                  
 
 void LevelUP(PLAYER* player, PLAYER Lable)                                       //레벨업 프렌드
 {
-	PLAYER Addstatus;
-	memset(&Addstatus, 0, sizeof(Addstatus));
 	if (player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp)
 	{
-		system("cls");
-		AddStatusSave(player, &Addstatus, Lable);
-		AddStatusApply(player, &Addstatus);
-		for (int i = 0; player->PlayerStatus[player->Level].Exp < player->PlayerStatus[player->Level].Max_Exp; i++)
+		int exp = 0;
+		for (; player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp; exp = player->PlayerStatus[player->Level].Exp - player->PlayerStatus[player->Level].Max_Exp)
 		{
-			puts("Level Up!");
+			puts("\nLevel Up!");
 			player->Level++;
-			player->PlayerStatus[player->Level].Exp -= player->PlayerStatus[player->Level].Max_Exp;	
-			CheckStatus(player, Lable);
+			CheckStatus(player, Lable, player->Level);
+			player->PlayerStatus->Exp = exp;
 			if (player->Level % 4 == 0)
 			{
 				int i = rand() % 5;
 					switch (i) {
-					case 0: player->PlayerStatus[player->Level].Str += 3; puts("랜덤적으로 힘이 3 증가했습니다.\n"); break;
-					case 1: player->PlayerStatus[player->Level].Def += 3; puts("랜덤적으로 방어력이 3 증가했습니다.\n"); break;
-					case 2: player->PlayerStatus[player->Level].Max_HP += 5; puts("랜덤적으로 최대체력이 5 증가했습니다.\n"); break;
-					case 3: player->PlayerStatus[player->Level].Spd += 6; puts("랜덤적으로 스피드가 6 증가했습니다..\n"); break;
-					case 4: player->PlayerStatus[player->Level].Max_San += 10; puts("랜덤적으로 최대정신력이 10 증가했습니다.\n"); break;
+					case 0: player->addStatus.Str += 3; puts("랜덤적으로 힘이 3 증가했습니다.\n"); break;
+					case 1: player->addStatus.Def += 3; puts("랜덤적으로 방어력이 3 증가했습니다.\n"); break;
+					case 2: player->addStatus.Max_HP += 5; puts("랜덤적으로 최대체력이 5 증가했습니다.\n"); break;
+					case 3: player->addStatus.Spd += 6; puts("랜덤적으로 스피드가 6 증가했습니다..\n"); break;
+					case 4: player->addStatus.Max_San += 10; puts("랜덤적으로 최대정신력이 10 증가했습니다.\n"); break;
 				}
 			}
+			CheckAddStatus(player);
 		}
 		
 	}
@@ -82,7 +79,7 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 		puts(" R . 부활 \n ESC . 나가기");
 		while (1) {
 			if (KI == 'r') {                                                     //'r'
-				CheckStatus(player, Lable);
+				CheckStatus(player, Lable, player->Level);
 				DiePlayer(player);
 				return 2;
 			}
@@ -183,7 +180,8 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int
 	}
 	if (i == 1) {                                                                /*턴 개념 Enter*/
 		(*count)++;
-		while (KI != 13) printf("\n%d turn", *count);
+		printf("\n%d turn", *count);
+		while (KI != 13);
 	}
 	return *life;
 }

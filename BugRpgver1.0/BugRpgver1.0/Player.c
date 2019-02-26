@@ -33,7 +33,7 @@ void MakePlayerLable(PLAYER* Lable) {
 	fclose(Data);
 }
 
-void PlayerStatusByLevel(PLAYER* player, PLAYER Lable, int level) {
+void CheckStatus(PLAYER* player, PLAYER Lable, int level) {
 	player->Level = level;
 	player->PlayerStatus[level] = Lable.PlayerStatus[level];
 	player->PlayerStatus[level].Exp = 0;
@@ -43,33 +43,16 @@ void PlayerStatusByLevel(PLAYER* player, PLAYER Lable, int level) {
 
 void MakePlayer(PLAYER* player, PLAYER Lable) {
 	MakePlayerName(player);
-	PlayerStatusByLevel(player, Lable, 1);
+	CheckStatus(player, Lable, 1);
 	player->PlayerStatus[1].Gold = 0;
 }
 
-void AddStatusSave(PLAYER* player, PLAYER* addstatus, PLAYER Lable) {
-	addstatus->PlayerStatus[player->Level].Str = player->PlayerStatus[player->Level].Str - Lable.PlayerStatus[player->Level].Str;
-	addstatus->PlayerStatus[player->Level].Def = player->PlayerStatus[player->Level].Def - Lable.PlayerStatus[player->Level].Def;
-	addstatus->PlayerStatus[player->Level].Spd = player->PlayerStatus[player->Level].Spd - Lable.PlayerStatus[player->Level].Spd;
-	addstatus->PlayerStatus[player->Level].Max_HP = player->PlayerStatus[player->Level].Max_HP - Lable.PlayerStatus[player->Level].Max_HP;
-	addstatus->PlayerStatus[player->Level].Max_San = player->PlayerStatus[player->Level].Max_San - Lable.PlayerStatus[player->Level].Max_San;
-}
-
-void AddStatusApply(PLAYER* player, PLAYER* addstatus) {
-	player->addStatus.Str = addstatus->PlayerStatus[player->Level].Str;
-	player->addStatus.Def = addstatus->PlayerStatus[player->Level].Def;
-	player->addStatus.Spd = addstatus->PlayerStatus[player->Level].Spd;
-	player->addStatus.Max_HP = addstatus->PlayerStatus[player->Level].Max_HP;
-	player->addStatus.Max_San = addstatus->PlayerStatus[player->Level].Max_San;
-	memset(&addstatus, 0, sizeof(addstatus));
-}
-
-void CheckStatus(PLAYER* player, PLAYER Lable) {
-	player->PlayerStatus[player->Level] = Lable.PlayerStatus[player->Level];
+void CheckAddStatus(PLAYER* player) {
 	player->PlayerStatus[player->Level].Str += player->addStatus.Str;
 	player->PlayerStatus[player->Level].Def += player->addStatus.Def;
 	player->PlayerStatus[player->Level].Spd += player->addStatus.Spd;
 	player->PlayerStatus[player->Level].Max_HP += player->addStatus.Max_HP;
+	player->PlayerStatus[player->Level].HP += player->addStatus.Max_HP;
 	player->PlayerStatus[player->Level].Max_San += player->addStatus.Max_San;
-	memset(&player->addStatus, 0, sizeof(player->addStatus));
+	player->PlayerStatus[player->Level].San += player->addStatus.Max_San;
 }
