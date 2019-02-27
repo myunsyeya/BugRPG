@@ -78,7 +78,7 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 		system("cls");
 		puts(" R . 부활 \n ESC . 나가기");
 		while (1) {
-			if (KI == 'r') {                                                     //'r'
+			if (KI == 114) {                                                     //'r'
 				CheckStatus(player, Lable, player->Level);
 				DiePlayer(player);
 				return 2;
@@ -90,6 +90,7 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 		puts("잡았다..");
 		GiveExp(player, monster);
 		LevelUP(player, Lable);
+		while (KI != 13);
 		return 2;
 		break;
 	}
@@ -166,7 +167,6 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int
 		i = 1;
 		system("cls");
 		*life = AttackSpd(player, Lable, monster, life);
-		if (*life == 0) i = 0;
 		break;
 	case 50:/*숫자2*/
 		i = 1;
@@ -178,9 +178,10 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int
 		system("cls");
 		return 0;
 	}
+	if (*life == 0 || *life == 2) i = 0;                                         /*사망판정*/
 	if (i == 1) {                                                                /*턴 개념 Enter*/
 		(*count)++;
-		printf("\n%d turn", *count);
+		printf("\n\n%d turn", *count);
 		while (KI != 13);
 	}
 	return *life;

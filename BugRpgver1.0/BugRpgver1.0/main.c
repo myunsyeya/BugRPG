@@ -29,6 +29,7 @@ int main() {
 			MakePlayer(&Player, PlayerLable);
 			while (back_graund(&Player, &PlayerPos, Map, Life)) {
 				battle_ground(&Player, PlayerLable, &PlayerPos, Map, Monster, MonsterList, &Life);
+				if (Life == 0) break;
 			}
 			break;
 		}
