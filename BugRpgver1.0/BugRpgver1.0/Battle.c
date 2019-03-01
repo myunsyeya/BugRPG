@@ -160,31 +160,26 @@ void battlestatus(PLAYER* player, MONSTER* monster) {
 	printf(" 1 . 공격 \n 2 . 스킬 \n 3. 아이템 \n ESC . 도망");
 }
 
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber) {
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber, int* i) {
 	battlestatus(player, monster);
-	int i = 0;
+	*i = 0;
 	switch (KI) {
 	case 49: /*숫자1*/
-		i = 1;
+		*i = 1;
 		system("cls");
 		*life = AttackSpd(player, Lable, monster, life);
 		break;
 	case 50:/*숫자2*/
 		BattleSkill(player, skillnumber);
-		i = 1;
+		*i = 1;
 		break;
 	case 51:/*숫자3*/
-		i = 1;
+		*i = 1;
 		break;
 	case 27:/*ESC키*/
 		system("cls");
 		return 0;
 	}
-	if (*life == 0 || *life == 2) i = 0;                                         /*사망판정*/
-	if (i == 1) {                                                                /*턴 개념 Enter*/
-		(*count)++;
-		printf("\n\n%d turn", *count);
-		while (KI != 13);
-	}
+	if (*life == 0 || *life == 2) *i = 0;                                         /*사망판정*/
 	return *life;
 }

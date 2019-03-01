@@ -55,7 +55,8 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 		int constrant = 0;
 		int skillnumber = 0;
 		int skill = 0;
-		while (battle_status(player, Lable, &monster, life, &count, &skillnumber)){
+		int i = 0;
+		while (battle_status(player, Lable, &monster, life, &count, &skillnumber, &i)){
 			if (*life == 2) {
 				*life = 1;
 				break;
@@ -69,6 +70,7 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 				constrant--;
 				FunctionSkill(player, &monster, skill, constrant);
 			}
+			if(i != 0) while (KI != 13);
 		}
 		player->SkillLimit = 0;
 	}
