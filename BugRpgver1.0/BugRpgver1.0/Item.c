@@ -15,12 +15,12 @@ void MakeItemList(ITEM* ItemList) {
 			for (i = 0; line[i]; i++) ItemList[count].name[i] = line[i];
 			ItemList[count].name[i - 1] = (char)NULL; break;
 			j = 0;
-		case 1: ItemList->ItemStatus.HP = atoi(line); break;
-		case 2: ItemList->ItemStatus.San = atoi(line); break;
-		case 3: ItemList->ItemStatus.Str = atoi(line); break;
-		case 4: ItemList->ItemStatus.Def = atoi(line); break;
-		case 5: ItemList->ItemStatus.Gold = atoi(line); break;
-		case 6: ItemList->itemnumber = atoi(line); break;
+		case 1: ItemList[count].ItemStatus.HP = atoi(line); break;
+		case 2: ItemList[count].ItemStatus.San = atoi(line); break;
+		case 3: ItemList[count].ItemStatus.Str = atoi(line); break;
+		case 4: ItemList[count].ItemStatus.Def = atoi(line); break;
+		case 5: ItemList[count].ItemStatus.Gold = atoi(line); break;
+		case 6: ItemList[count].itemnumber = atoi(line); break;
 		default: 
 			for (i = 0; line[i]; i++) { ItemList[count].info[j] = line[i]; j++; }
 			j--; ItemList[count].info[j] = (char)NULL; break;

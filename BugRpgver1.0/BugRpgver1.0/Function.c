@@ -73,7 +73,7 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 				FunctionSkill(player, &monster, skill, constrant);
 			}
 			FunctionItem(player, ItemList, itemnumber);
-			item = itemnumber;
+			if(itemnumber != 0) item = itemnumber;
 			itemnumber = 0;
 			if(i != 0) while (KI != 13);                                            //ео
 		}
