@@ -1,6 +1,8 @@
 #pragma once
 #include "Common.h"
 #include "Player.h"
+#include "Skill.h"
+#include "Item.h"
 
 void PlayerHit(PLAYER* player, MONSTER* monster);
 void MonsterHit(PLAYER* player, MONSTER* monster);
@@ -11,4 +13,4 @@ void LevelUP(PLAYER* player, PLAYER Lable);
 int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster);
 int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life);
 void battlestatus(PLAYER* player, MONSTER* monster);
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber, int* i);
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber, int* itemnumber, int* i);

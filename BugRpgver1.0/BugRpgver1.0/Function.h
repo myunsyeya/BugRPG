@@ -10,4 +10,4 @@
 
 void init();
 int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], int life);
-void battle_ground(PLAYER* player, PLAYER lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, int* life);
+void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, ITEM* ItemList, int* life);

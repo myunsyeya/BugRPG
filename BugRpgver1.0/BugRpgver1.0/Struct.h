@@ -20,7 +20,7 @@ typedef struct _tagStatus {
 typedef struct _tagItem{
 	char name[NAME_SIZE];
 	char info[MAXIMUM];
-	int Data;
+	int itemnumber;
 	STATUS ItemStatus;
 }ITEM;
 
@@ -34,7 +34,9 @@ typedef struct _tagPlayer {
 	char name[NAME_SIZE]; 
 	int Level;
 	int SkillLimit;
+	int equipment;
 	SKILL PlayerSkill[10];
+	ITEM inventory[5];
 	STATUS PlayerStatus[12];
 	STATUS addStatus;
 }PLAYER;

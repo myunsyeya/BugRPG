@@ -21,6 +21,8 @@ ItemList
 	//San
 	//Str
 	//Def
+	//Gold
+아이템 넘버
 아이템 설명 // char arr[64]*4 256자까지 허용 /char arr[64][9]
 
 maximum은 256 

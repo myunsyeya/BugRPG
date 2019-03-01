@@ -10,6 +10,7 @@ int main() {
 	MONSTER MonsterList[10];
 	MONSTER Monster;
 	SKILL SkillList[10];
+	ITEM ItemList[10];
 	POS PlayerPos;
 	PlayerPos.x = 25;
 	PlayerPos.y = 5;
@@ -18,11 +19,14 @@ int main() {
 	memset(&MonsterList, 0, sizeof(MonsterList));
 	memset(&Monster, 0, sizeof(Monster));
 	memset(&SkillList, 0, sizeof(SkillList));
+	memset(&ItemList, 0, sizeof(ItemList));
 	MakeMap(Map);
 	MakePlayerLable(&PlayerLable);
 	MakeMonsterList(MonsterList);
 	MakeSkillList(SkillList);
+	MakeItemList(ItemList);
 	MakePlayerSkill(&Player, SkillList, 0, 0);
+	MakePlayerItem(&Player, ItemList, 0, 0);
 	init();
 	while (1)
 	{
@@ -32,7 +36,7 @@ int main() {
 			system("cls");
 			MakePlayer(&Player, PlayerLable);
 			while (back_graund(&Player, &PlayerPos, Map, Life)) {
-				battle_ground(&Player, PlayerLable, &PlayerPos, Map, Monster, MonsterList, &Life);
+				battle_ground(&Player, PlayerLable, &PlayerPos, Map, Monster, MonsterList, ItemList, &Life);
 				if (Life == 0) break;
 			}
 			break;

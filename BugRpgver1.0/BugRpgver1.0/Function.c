@@ -46,7 +46,7 @@ int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], in
 	return life;
 }
 
-void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, int* life) {
+void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, ITEM* ItemList, int* life) {
 	if (map[playerpos->y][playerpos->x] == '2' && rand() % 50 == 2) {
 		MakeMonster(&monster, list, player->Level);
 		printf("이런, %s가 나타났다.", monster.name);
@@ -54,24 +54,30 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 		int count = 0;
 		int constrant = 0;
 		int skillnumber = 0;
+		int itemnumber = 0;
 		int skill = 0;
+		int item = 0;
 		int i = 0;
-		while (battle_status(player, Lable, &monster, life, &count, &skillnumber, &i)){
-			if (*life == 2) {
+		while (battle_status(player, Lable, &monster, life, &count, &skillnumber, &itemnumber, &i)){
+			if (*life == 2) {                                                       //승리 판정
 				*life = 1;
 				break;
 			}
-			if (skillnumber != 0) {
+			if (skillnumber != 0) {                                                 //스킬 발동
 				constrant = FunctionSkill(player, &monster, skillnumber, constrant);
 				skill = skillnumber;
 				skillnumber = 0;
 			}
-			if (constrant != 0) {
+			if (constrant != 0) {                                                   //지속 스킬
 				constrant--;
 				FunctionSkill(player, &monster, skill, constrant);
 			}
-			if(i != 0) while (KI != 13);
+			FunctionItem(player, ItemList, itemnumber);
+			item = itemnumber;
+			itemnumber = 0;
+			if(i != 0) while (KI != 13);                                            //턴
 		}
+		ReturnFunctionItem(player, ItemList, item);
 		player->SkillLimit = 0;
 	}
 }

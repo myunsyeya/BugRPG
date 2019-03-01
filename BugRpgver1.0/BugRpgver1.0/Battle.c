@@ -1,5 +1,4 @@
 #include "Battle.h"
-#include "Skill.h"
 
 void PlayerHit(PLAYER* player, MONSTER* monster)                               //일반공격
 {
@@ -171,7 +170,7 @@ void battlestatus(PLAYER* player, MONSTER* monster) {
 	printf(" 1 . 공격 \n 2 . 스킬 \n 3. 아이템 \n ESC . 도망");
 }
 
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber, int* i) {
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber,int* itemnumber, int* i) {
 	battlestatus(player, monster);
 	*i = 0;
 	switch (KI) {
@@ -185,6 +184,7 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int
 		*i = 1;
 		break;
 	case 51:/*숫자3*/
+		BattleItem(player, itemnumber);
 		*i = 1;
 		break;
 	case 27:/*ESC키*/

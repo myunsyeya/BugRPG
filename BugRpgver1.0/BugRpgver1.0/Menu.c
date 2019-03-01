@@ -13,6 +13,11 @@ int menu(PLAYER* player) {
 			printf("\n °ñµå %d\n", player->PlayerStatus[player->Level].Gold);
 			printf("\n");
 			printf("\n");
+			printf("item list : ");
+			for (i = 0; player->inventory[i].itemnumber != 0; i++) {
+				printf("%d.%s  :  \n\n", i + 1, player->inventory[i].name);
+				printf("             %s", player->inventory[i].info);
+			}
 			while (1) if (KI == 27) break;
 			break;
 		case 50:/*¼ıÀÚ2*/
