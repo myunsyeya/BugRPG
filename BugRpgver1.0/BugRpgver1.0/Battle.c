@@ -34,6 +34,10 @@ void GiveExp(PLAYER* player, MONSTER* monster)                                  
 	player->PlayerStatus[player->Level].Exp += monster->MonsterStatus.Exp;
 }
 
+void GiveGold(PLAYER* player, MONSTER* monster) {                               //골드 획득
+	player->PlayerStatus[player->Level].Gold += monster->MonsterStatus.Gold;
+}
+
 void DiePlayer(PLAYER* player)                                                  //죽을 시 경험치
 {
 	player->PlayerStatus[player->Level].Exp = 0;
@@ -46,12 +50,15 @@ void LevelUP(PLAYER* player, PLAYER Lable)                                      
 	if (player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp)
 	{
 		int exp = 0;
+		int gold = 0;
 		for (; player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp; exp = player->PlayerStatus[player->Level].Exp - player->PlayerStatus[player->Level].Max_Exp)
 		{
+			gold = player->PlayerStatus[player->Level].Gold;
 			puts("\nLevel Up!");
 			player->Level++;
 			CheckStatus(player, Lable, player->Level);
-			player->PlayerStatus->Exp = exp;
+			exp = player->PlayerStatus[player->Level].Exp;
+			player->PlayerStatus[player->Level].Gold;
 			if (player->Level % 4 == 0)
 			{
 				int i = rand() % 5;
@@ -90,6 +97,10 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 	case 2: system("cls");
 		puts("잡았다..");
 		GiveExp(player, monster);
+		printf("\n%d의 경험치를 얻었다!", monster->MonsterStatus.Exp);
+		GiveGold(player, monster);
+		printf("\n%d의 금화를 얻었다!", monster->MonsterStatus.Gold);
+		printf("\n\n'벌레가 어떻게 금화를 가지고 있지..?'");
 		LevelUP(player, Lable);
 		while (KI != 13);
 		return 2;
