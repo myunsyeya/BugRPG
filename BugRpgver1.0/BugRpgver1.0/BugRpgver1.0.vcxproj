@@ -124,7 +124,7 @@
     <Text Include="MonsterNamefile.txt" />
     <Text Include="MonsterParameterFile.txt" />
     <Text Include="PlayerLable.txt" />
-    <Text Include="SkillList.txt.txt" />
+    <Text Include="SkillList.txt" />
     <Text Include="파일 양식.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +135,9 @@
     <ClCompile Include="Map.c" />
     <ClCompile Include="Menu.c" />
     <ClCompile Include="Monster.c" />
+    <ClCompile Include="MonsterSkill.c" />
     <ClCompile Include="Player.c" />
+    <ClCompile Include="PlayerSkill.c" />
     <ClCompile Include="Skill.c" />
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +148,9 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterSkill.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSkill.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>

@@ -30,10 +30,10 @@
     <Text Include="PlayerLable.txt">
       <Filter>리소스 파일</Filter>
     </Text>
-    <Text Include="SkillList.txt.txt">
+    <Text Include="파일 양식.txt">
       <Filter>리소스 파일</Filter>
     </Text>
-    <Text Include="파일 양식.txt">
+    <Text Include="SkillList.txt">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>
@@ -63,6 +63,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Skill.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterSkill.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSkill.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,6 +101,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Struct.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterSkill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSkill.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -27,21 +27,21 @@ typedef struct _tagItem{
 typedef struct _tagSkill {
 	char name[NAME_SIZE];
 	char Index[MAXIMUM];
-	int San;
-	int Data;
+	int SkillNumber;
 }SKILL;
 
 typedef struct _tagPlayer {
 	char name[NAME_SIZE]; 
 	int Level;
-	SKILL PlayerSkill[12];
+	int SkillLimit;
+	SKILL PlayerSkill[10];
 	STATUS PlayerStatus[12];
 	STATUS addStatus;
 }PLAYER;
 
 typedef struct _tagMonster{
 	char name[NAME_SIZE];
-	SKILL MonsterSkill;
+	SKILL MonsterSkill[4];
 	STATUS MonsterStatus;
 }MONSTER;
 

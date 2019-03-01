@@ -9,6 +9,7 @@ int main() {
 	PLAYER PlayerLable;
 	MONSTER MonsterList[10];
 	MONSTER Monster;
+	SKILL SkillList[10];
 	POS PlayerPos;
 	PlayerPos.x = 25;
 	PlayerPos.y = 5;
@@ -16,9 +17,12 @@ int main() {
 	memset(&PlayerLable, 0, sizeof(PlayerLable));
 	memset(&MonsterList, 0, sizeof(MonsterList));
 	memset(&Monster, 0, sizeof(Monster));
+	memset(&SkillList, 0, sizeof(SkillList));
 	MakeMap(Map);
 	MakePlayerLable(&PlayerLable);
 	MakeMonsterList(MonsterList);
+	MakeSkillList(SkillList);
+	MakePlayerSkill(&Player, SkillList, 0, 0);
 	init();
 	while (1)
 	{

@@ -1,6 +1,7 @@
 #include "Menu.h"
 
 int menu(PLAYER* player) {
+	int i = 0;
 	system("cls");
 	printf(" 1 . 아이템 \n 2 . 스탯 \n 3. 스킬 \n ESC . 나가기");
 	switch (KI) {
@@ -34,8 +35,12 @@ int menu(PLAYER* player) {
 			system("cls");
 			printf("ESC . 나가기");
 			printf("\n");
-			printf("\n 스킬\n");
 			printf("\n");
+			printf("skill list : ");
+			for (i = 0; player->PlayerSkill[i].SkillNumber != 0; i++) {
+				printf("%d.%s  :  \n\n", i + 1, player->PlayerSkill[i].name);
+				printf("             %s", player->PlayerSkill[i].Index);
+			}
 			while (1) if ((int)_getch() == 27) break;
 			break;
 		case 27:/*ESC키*/
