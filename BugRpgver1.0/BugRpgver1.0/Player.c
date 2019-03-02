@@ -14,7 +14,7 @@ void MakePlayerLable(PLAYER* Lable) {
 	errno_t err = fopen_s(&Data, "PlayerLable.txt", "rt");
 	if (err != 0) puts("무언가... 무언가 잘못됨");
 	int count = 0;
-	char line[5];
+	char line[5] = { 0 };
 	int i = 0;
 	int level = 0;
 	while (fgets(line, sizeof(line), Data) != NULL) {

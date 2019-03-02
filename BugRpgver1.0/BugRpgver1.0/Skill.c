@@ -4,7 +4,7 @@ void MakeSkillList(SKILL* SkillList) {
 	FILE* SkillFile = NULL;
 	errno_t err = fopen_s(&SkillFile, "SkillList.txt", "rt");
 	if (err != 0) puts("무언가...무언가 잘못됨");
-	char line[64];
+	char line[64] = { 0 };
 	int number = 0;
 	int count = 0;
 	int i = 0;
