@@ -13,8 +13,8 @@ void MakeItemList(ITEM* ItemList) {
 		switch (number % 11) {
 		case 0: count = number / 11;
 			for (i = 0; line[i]; i++) ItemList[count].name[i] = line[i];
-			ItemList[count].name[i - 1] = (char)NULL; break;
-			j = 0;
+			ItemList[count].name[i - 1] = (char)NULL;
+			j = 0; break;
 		case 1: ItemList[count].ItemStatus.HP = atoi(line); break;
 		case 2: ItemList[count].ItemStatus.San = atoi(line); break;
 		case 3: ItemList[count].ItemStatus.Str = atoi(line); break;

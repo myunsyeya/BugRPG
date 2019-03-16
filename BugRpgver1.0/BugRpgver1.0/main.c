@@ -10,7 +10,7 @@ int main() {
 	MONSTER MonsterList[10];
 	MONSTER Monster;
 	SKILL SkillList[10];
-	ITEM ItemList[11];
+	ITEM ItemList[10];
 	POS PlayerPos;
 	PlayerPos.x = 25;
 	PlayerPos.y = 5;
