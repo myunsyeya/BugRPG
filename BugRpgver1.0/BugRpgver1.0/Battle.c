@@ -40,8 +40,6 @@ void GiveGold(PLAYER* player, MONSTER* monster) {                               
 void DiePlayer(PLAYER* player)                                                  //죽을 시 경험치
 {
 	player->PlayerStatus[player->Level].Exp = 0;
-	player->PlayerStatus[player->Level].HP = player->PlayerStatus[player->Level].Max_HP;
-	player->PlayerStatus[player->Level].San = player->PlayerStatus[player->Level].Max_San;
 }
 
 void LevelUP(PLAYER* player, PLAYER Lable)                                       //레벨업 프렌드

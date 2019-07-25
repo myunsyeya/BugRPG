@@ -79,7 +79,7 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 			}
 			if(i != 0) while (KI != 13);                                            //ео
 		}
-		ReturnFunctionItem(player, ItemList, item);
+		if(item != 0) ReturnFunctionItem(player, ItemList, item);
 		player->SkillLimit = 0;
 	}
 }
