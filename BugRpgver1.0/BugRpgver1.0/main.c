@@ -12,8 +12,8 @@ int main() {
 	SKILL SkillList[10];
 	ITEM ItemList[10];
 	POS PlayerPos;
-	PlayerPos.x = 25;
-	PlayerPos.y = 5;
+	PlayerPos.x = 31;
+	PlayerPos.y = 56;
 	memset(&Player, 0, sizeof(Player));
 	memset(&PlayerLable, 0, sizeof(PlayerLable));
 	memset(&MonsterList, 0, sizeof(MonsterList));

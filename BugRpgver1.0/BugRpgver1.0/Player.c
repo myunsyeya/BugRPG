@@ -36,6 +36,7 @@ void MakePlayerLable(PLAYER* Lable) {
 void CheckStatus(PLAYER* player, PLAYER Lable, int level) {
 	player->Level = level;
 	player->PlayerStatus[level] = Lable.PlayerStatus[level];
+	player->PlayerStatus[level].Exp = 0;
 	player->PlayerStatus[level].HP = player->PlayerStatus[level].Max_HP;
 	player->PlayerStatus[level].San = player->PlayerStatus[level].Max_San;
 }

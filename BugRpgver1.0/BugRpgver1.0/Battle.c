@@ -1,4 +1,66 @@
 #include "Battle.h"
+/*최신*/
+
+void statusBarHp(PLAYER *player)
+{
+	int t;
+	int hp = (int)player->PlayerStatus[player->Level].HP;
+	int maxHp = (int)player->PlayerStatus[player->Level].Max_HP;
+	t = maxHp / 10;
+	for (int c = 0; c != 10; c++)
+	{
+		if (hp >= t)
+		{
+			printf("■");
+		}
+		else
+		{
+			printf("□");
+		}
+		hp = hp - t;
+	}
+}
+
+void statusBarSan(PLAYER *player)
+{
+	int t;
+	int san = (int)player->PlayerStatus[player->Level].San;
+	int maxSan = (int)player->PlayerStatus[player->Level].Max_San;
+	t = maxSan / 10;
+	for (int c = 0; c != 10; c++)
+	{
+		if (san >= t)
+		{
+			printf("■");
+		}
+		else
+		{
+			printf("□");
+		}
+		san = san - t;
+	}
+}
+
+void monsterHpBar(MONSTER *monster)
+{
+	int t;
+	int hp = (int)monster->MonsterStatus.HP;
+	int maxHp = (int)monster->MonsterStatus.Max_HP;
+;
+	t = maxHp / 10;
+	for (int c = 0; c != 10; c++)
+	{
+		if (hp >= t)
+		{
+			printf("■");
+		}
+		else
+		{
+			printf("□");
+		}
+		hp = hp - t;
+	}
+}
 
 void PlayerHit(PLAYER* player, MONSTER* monster)                               //일반공격
 {
@@ -40,6 +102,8 @@ void GiveGold(PLAYER* player, MONSTER* monster) {                               
 void DiePlayer(PLAYER* player)                                                  //죽을 시 경험치
 {
 	player->PlayerStatus[player->Level].Exp = 0;
+	player->PlayerStatus[player->Level].HP = player->PlayerStatus[player->Level].Max_HP;
+	player->PlayerStatus[player->Level].San = player->PlayerStatus[player->Level].Max_San;
 }
 
 void LevelUP(PLAYER* player, PLAYER Lable)                                       //레벨업 프렌드
@@ -154,18 +218,29 @@ int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 
 void battlestatus(PLAYER* player, MONSTER* monster) {
 	system("cls");
-	printf("%s :   ", monster->name);
-	printf("Hp : %d|%d ", monster->MonsterStatus.HP, monster->MonsterStatus.Max_HP);
-	printf("/Str : %d ", monster->MonsterStatus.Str);
-	printf("/Def : %d ", monster->MonsterStatus.Def);
-	printf("/Spd : %d\n\n", monster->MonsterStatus.Spd);
-	printf("%s :   ", player->name);
-	printf("Hp : %d|%d ", player->PlayerStatus[player->Level].HP, player->PlayerStatus[player->Level].Max_HP);
-	printf("/San : %d|%d ", player->PlayerStatus[player->Level].San, player->PlayerStatus[player->Level].Max_San);
-	printf("/Str : %d ", player->PlayerStatus[player->Level].Str);
-	printf("/Def : %d ", player->PlayerStatus[player->Level].Def);
-	printf("/Spd : %d\n\n", player->PlayerStatus[player->Level].Spd);
-	printf(" 1 . 공격 \n 2 . 스킬 \n 3. 아이템 \n ESC . 도망");
+	printf("\n");
+	printf("  %s \n", monster->name);
+	printf(" ┌────────────────────────────────┐\n");
+	printf(" │몬스터 HP : ");
+	monsterHpBar(monster);
+	printf("│\n");
+	printf(" └────────────────────────────────┘\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("  %s \n", player->name);
+	printf(" ┌───────────────────────────┐\n"); 
+	printf(" │  HP : ");
+	statusBarHp(player);
+	printf("│");
+	printf("\n │ SAN : ");
+	statusBarSan(player);
+	printf("│");
+	printf("\n");
+	printf(" ├───────────────────────────┴────────┐");
+	printf("\n │ 1.공격  2.스킬  3.아이템  ESC.도망 │\n");
+	printf(" └────────────────────────────────────┘");
+	printf("\n");
 }
 
 int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber,int* itemnumber, int* i) {

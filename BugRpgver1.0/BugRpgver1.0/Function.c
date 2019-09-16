@@ -47,7 +47,7 @@ int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], in
 }
 
 void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, ITEM* ItemList, int* life) {
-	if (map[playerpos->y][playerpos->x] == '2' && rand() % 50 == 2) {
+	if (map[playerpos->y][playerpos->x] == '2' && rand() % 3 == 2) {
 		MakeMonster(&monster, list, player->Level);
 		printf("이런, %s가 나타났다.", monster.name);
 		while (KI != 13);
@@ -79,7 +79,7 @@ void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SI
 			}
 			if(i != 0) while (KI != 13);                                            //턴
 		}
-		if(item != 0) ReturnFunctionItem(player, ItemList, item);
+		ReturnFunctionItem(player, ItemList, item);
 		player->SkillLimit = 0;
 	}
 }
