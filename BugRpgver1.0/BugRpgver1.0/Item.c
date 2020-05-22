@@ -12,8 +12,8 @@ void MakeItemList(ITEM* ItemList) {
 	while (fgets(line, sizeof(line), ItemFile)) {
 		switch (number % 11) {
 		case 0: count = number / 11;
-			for (i = 0; line[i]; i++) ItemList[count].name[i] = line[i];
-			ItemList[count].name[i - 1] = (char)NULL;
+			for (i = 0; line[i] != '\n'; i++) ItemList[count].name[i] = line[i];
+			ItemList[count].name[i] = (char)NULL;
 			j = 0; break;
 		case 1: ItemList[count].ItemStatus.HP = atoi(line); break;
 		case 2: ItemList[count].ItemStatus.San = atoi(line); break;
@@ -22,8 +22,9 @@ void MakeItemList(ITEM* ItemList) {
 		case 5: ItemList[count].ItemStatus.Gold = atoi(line); break;
 		case 6: ItemList[count].itemnumber = atoi(line); break;
 		default: 
-			for (i = 0; line[i]; i++) { ItemList[count].info[j] = line[i]; j++; }
-			j--; ItemList[count].info[j] = (char)NULL; break;
+			for (i = 0; line[i] != '\n'; i++, j++)
+				ItemList[count].info[j] = line[i];
+			ItemList[count].info[j] = (char)NULL; break;
 		}
 		number++;
 	}

@@ -12,12 +12,13 @@ void MakeSkillList(SKILL* SkillList) {
 	while (fgets(line, sizeof(line), SkillFile)) {
 		switch (number % 6) {
 		case 0: count = number / 6;
-			for (i = 0; line[i]; i++) SkillList[count].name[i] = line[i];
-			SkillList[count].name[i - 1] = (char)NULL; break;
+			for (i = 0; line[i] != '\n'; i++) SkillList[count].name[i] = line[i];
+			SkillList[count].name[i] = (char)NULL; break;
 		case 5: SkillList[count].SkillNumber = atoi(line); j = 0; break;
 		default:
-			for (i = 0; line[i]; i++) { SkillList[count].Index[j] = line[i]; j++; } 
-			j--; SkillList[count].Index[j] = (char)NULL; break;
+			for (i = 0; line[i] != '\n'; i++, j++) 
+				SkillList[count].Index[j] = line[i]; 
+			SkillList[count].Index[j] = (char)NULL; break;
 		}
 		number++;
 	}

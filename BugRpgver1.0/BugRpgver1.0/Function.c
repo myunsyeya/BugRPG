@@ -3,15 +3,12 @@
 void initialize(PLAYER* Player, PLAYER* PlayerLable, MONSTER* Monster, MONSTER* MonsterList,
 	SKILL* SkillList, ITEM* ItemList, POS* PlayerPos, char Map[MAP_SIZE][MAP_SIZE])
 {
-	Player->life = 1;
-	PlayerPos->x = 31;
-	PlayerPos->y = 56;
-	memset(Player, 0, sizeof(Player));
-	memset(PlayerLable, 0, sizeof(PlayerLable));
-	memset(MonsterList, 0, sizeof(MonsterList));
+	memset(Player, 0, sizeof(*Player));
+	memset(PlayerLable, 0, sizeof(*PlayerLable));
 	memset(Monster, 0, sizeof(Monster));
-	memset(SkillList, 0, sizeof(SkillList));
-	memset(ItemList, 0, sizeof(ItemList));
+	memset(MonsterList, 0, sizeof(*MonsterList)*10);
+	memset(SkillList, 0, sizeof(*SkillList)*10);
+	memset(ItemList, 0, sizeof(*ItemList)*10);
 	MakeMap(Map);
 	MakePlayerLable(PlayerLable);
 	MakeMonsterList(MonsterList);
@@ -19,6 +16,9 @@ void initialize(PLAYER* Player, PLAYER* PlayerLable, MONSTER* Monster, MONSTER* 
 	MakeItemList(ItemList);
 	MakePlayerSkill(Player, SkillList, 0, 0);
 	MakePlayerItem(Player, ItemList, 0, 0);
+	Player->life = 1;
+	PlayerPos->x = 31;
+	PlayerPos->y = 56;
 }
 
 void init()

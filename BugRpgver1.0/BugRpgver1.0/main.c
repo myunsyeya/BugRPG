@@ -14,7 +14,8 @@ int main() {
 	init();
 	while (1)
 	{
-		if (KI)                     //Enter 시작
+		char input = KI;
+		if (input == 13)                     //Enter 시작
 		{
 			system("cls");
 			MakePlayer(Player, *PlayerLable);
@@ -24,11 +25,12 @@ int main() {
 			}
 			break;
 		}
-		if (KI == 120 || KI == 88) break; //나가기
+		else if (input == 120 || input == 88) break; //나가기
 	}
 	system("cls");
 	printf("바이바이~");
 	Sleep(2000);
+	getchar();
 	freeAll(Player, PlayerLable, Monster, MonsterList, SkillList, ItemList, PlayerPos);
 	return 0;
 }
