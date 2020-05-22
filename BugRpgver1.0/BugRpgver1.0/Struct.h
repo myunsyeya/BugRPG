@@ -32,6 +32,7 @@ typedef struct _tagSkill {
 
 typedef struct _tagPlayer {
 	char name[NAME_SIZE]; 
+	int life;
 	int Level;
 	int SkillLimit;
 	int equipment;

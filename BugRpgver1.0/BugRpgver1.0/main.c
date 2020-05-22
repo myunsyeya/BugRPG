@@ -3,45 +3,32 @@
 int main() {
 	srand((unsigned int)time(NULL));
 	char Map[MAP_SIZE][MAP_SIZE] = { 0 };
-	int ki;
-	int Life = 1;
-	PLAYER Player;
-	PLAYER PlayerLable;
-	MONSTER MonsterList[10];
-	MONSTER Monster;
-	SKILL SkillList[10];
-	ITEM ItemList[10];
-	POS PlayerPos;
-	PlayerPos.x = 31;
-	PlayerPos.y = 56;
-	memset(&Player, 0, sizeof(Player));
-	memset(&PlayerLable, 0, sizeof(PlayerLable));
-	memset(&MonsterList, 0, sizeof(MonsterList));
-	memset(&Monster, 0, sizeof(Monster));
-	memset(&SkillList, 0, sizeof(SkillList));
-	memset(&ItemList, 0, sizeof(ItemList));
-	MakeMap(Map);
-	MakePlayerLable(&PlayerLable);
-	MakeMonsterList(MonsterList);
-	MakeSkillList(SkillList);
-	MakeItemList(ItemList);
-	MakePlayerSkill(&Player, SkillList, 0, 0);
-	MakePlayerItem(&Player, ItemList, 0, 0);
+	PLAYER* Player = malloc(sizeof(PLAYER));
+	PLAYER* PlayerLable = malloc(sizeof(PLAYER));
+	MONSTER* Monster = malloc(sizeof(MONSTER));
+	MONSTER* MonsterList = malloc(sizeof(MONSTER) * 10);
+	SKILL* SkillList = malloc(sizeof(SKILL) * 10);
+	ITEM* ItemList = malloc(sizeof(ITEM) * 10);
+	POS* PlayerPos = malloc(sizeof(POS));
+	initialize(Player, PlayerLable, Monster, MonsterList, SkillList, ItemList, PlayerPos, Map);
 	init();
 	while (1)
 	{
-		ki = _getch();
-		if (ki == 13)                     //Enter 시작
+		if (KI)                     //Enter 시작
 		{
 			system("cls");
-			MakePlayer(&Player, PlayerLable);
-			while (back_graund(&Player, &PlayerPos, Map, Life)) {
-				battle_ground(&Player, PlayerLable, &PlayerPos, Map, Monster, MonsterList, ItemList, &Life);
-				if (Life == 0) break;
+			MakePlayer(Player, *PlayerLable);
+			while (back_graund(Player, PlayerPos, Map)) {
+				battle_ground(Player, *PlayerLable, PlayerPos, Map, *Monster, MonsterList, ItemList);
+				if (Player->life == 0) break;
 			}
 			break;
 		}
-		if (ki == 120 || ki == 88) break; //나가기
+		if (KI == 120 || KI == 88) break; //나가기
 	}
+	system("cls");
+	printf("바이바이~");
+	Sleep(2000);
+	freeAll(Player, PlayerLable, Monster, MonsterList, SkillList, ItemList, PlayerPos);
 	return 0;
 }

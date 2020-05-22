@@ -4,4 +4,5 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
+#include <Windows.h>
 #include "Struct.h"

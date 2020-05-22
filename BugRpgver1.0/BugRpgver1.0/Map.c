@@ -69,9 +69,8 @@ void PrintMapByPlayer(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 	}
 }
 
-void MoveMap(char map[MAP_SIZE][MAP_SIZE], POS* playerpos)
+void MoveMap(char map[MAP_SIZE][MAP_SIZE], POS* playerpos, int input)
 {
-	char input = _getch();
 	switch (input)
 	{
 	case 'w':

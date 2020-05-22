@@ -8,6 +8,11 @@
 #include "Battle.h"
 #include "Map.h"
 
+void initialize(PLAYER* Player, PLAYER* PlayerLable, MONSTER* Monster, MONSTER* MonsterList, 
+	SKILL* SkillList, ITEM* ItemList, POS* PlayerPos, char Map[MAP_SIZE][MAP_SIZE]);
 void init();
-int back_graund(PLAYER* player, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], int life);
-void battle_ground(PLAYER* player, PLAYER Lable, POS* playerpos, char map[MAP_SIZE][MAP_SIZE], MONSTER monster, MONSTER* list, ITEM* ItemList, int* life);
+int back_graund(PLAYER* player, POS* playerPos, char map[MAP_SIZE][MAP_SIZE]);
+void battle_ground(PLAYER* player, PLAYER Lable, POS* playerPos, char map[MAP_SIZE][MAP_SIZE], 
+	MONSTER monster, MONSTER* monsterList, ITEM* ItemList);
+void freeAll(PLAYER* Player, PLAYER* PlayerLable, MONSTER* Monster, MONSTER* MonsterList,
+	SKILL* SkillList, ITEM* ItemList, POS* PlayerPos);

@@ -3,7 +3,7 @@
 int menu(PLAYER* player) {
 	int i = 0;
 	system("cls");
-	printf(" 1 . 아이템 \n 2 . 스탯 \n 3. 스킬 \n ESC . 나가기");
+	printf(" 1 . 아이템 \n 2 . 스탯 \n 3. 스킬 \n ESC . 메뉴 나가기 \n X . 게임 종료");
 	switch (KI) {
 		case 49: /*숫자1*/
 			system("cls");
@@ -51,6 +51,13 @@ int menu(PLAYER* player) {
 		case 27:/*ESC키*/
 			system("cls");
 			return 0;
+		case 'x':
+		case 'X':
+			player->life = 0;
+			return 0;
+			break;
+		default:
+			break;
 	}
 	return 1;
 }

@@ -170,13 +170,13 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 	return 0;
 }
 
-int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
+int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 	if (player->PlayerStatus[player->Level].Spd < monster->MonsterStatus.Spd) {
 		puts("칫, 선공을 받았다.");
 		MonsterHit(player, monster);
 		printf("%s로부터 %d의 대미지!\n", monster->name, monster->MonsterStatus.Str);
-		*life = CheckWinner(player, Lable, monster);
-		switch (*life)
+		player->life = CheckWinner(player, Lable, monster);
+		switch (player->life)
 		{
 		case 0: break;
 		case 1: return 0;
@@ -184,8 +184,8 @@ int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 		}
 		PlayerHit(player, monster);
 		printf("%s에게 %d의 대미지를 주었다.", monster->name, player->PlayerStatus[player->Level].Str);
-		*life = CheckWinner(player, Lable, monster);
-		switch (*life)
+		player->life = CheckWinner(player, Lable, monster);
+		switch (player->life)
 		{
 		case 0: break;
 		case 1: return 0;
@@ -196,8 +196,8 @@ int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 		puts("캇.. 벌레녀석 이정도 밖에 안되나.");
 		PlayerHit(player, monster);
 		printf("%s에게 %d의 대미지를 주었다.\n", monster->name, player->PlayerStatus[player->Level].Str);
-		*life = CheckWinner(player, Lable, monster);
-		switch (*life)
+		player->life = CheckWinner(player, Lable, monster);
+		switch (player->life)
 		{
 		case 0: break;
 		case 1: return 0;
@@ -205,8 +205,8 @@ int AttackSpd(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life) {
 		}
 		MonsterHit(player, monster);
 		printf("%s로부터 %d의 대미지!", monster->name, monster->MonsterStatus.Str);
-		*life = CheckWinner(player, Lable, monster);
-		switch (*life)
+		player->life = CheckWinner(player, Lable, monster);
+		switch (player->life)
 		{
 		case 0: break;
 		case 1: return 0;
@@ -243,14 +243,15 @@ void battlestatus(PLAYER* player, MONSTER* monster) {
 	printf("\n");
 }
 
-int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int* count, int* skillnumber,int* itemnumber, int* i) {
+int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* count, 
+	int* skillnumber, int* itemnumber, int* i) {
 	battlestatus(player, monster);
 	*i = 0;
 	switch (KI) {
 	case 49: /*숫자1*/
 		*i = 1;
 		system("cls");
-		*life = AttackSpd(player, Lable, monster, life);
+		player->life = AttackSpd(player, Lable, monster);
 		break;
 	case 50:/*숫자2*/
 		BattleSkill(player, skillnumber);
@@ -264,6 +265,6 @@ int battle_status(PLAYER* player, PLAYER Lable, MONSTER* monster, int* life, int
 		system("cls");
 		return 0;
 	}
-	if (*life == 0 || *life == 2) *i = 0;                                         /*사망판정*/
-	return *life;
+	if (player->life == 0 || player->life == 2) *i = 0;                                 /*사망판정*/
+	return player->life;
 }
