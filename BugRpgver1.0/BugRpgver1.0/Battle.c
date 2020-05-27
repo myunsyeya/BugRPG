@@ -147,12 +147,13 @@ int CheckWinner(PLAYER* player, PLAYER Lable, MONSTER* monster) {
 		system("cls");
 		puts(" R . 부활 \n ESC . 나가기");
 		while (1) {
-			if (KI == 114) {                                                     //'r'
+			char ki = KI;
+			if (ki == 114) {                                                     //'r'
 				CheckStatus(player, Lable, player->Level);
 				DiePlayer(player);
 				return 2;
 			}
-			if (KI == 27) return 1;                                              //ESC
+			if (ki == 27) return 1;                                              //ESC
 		}
 		break;
 	case 2: system("cls");

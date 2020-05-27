@@ -20,7 +20,10 @@ int main() {
 			system("cls");
 			MakePlayer(Player, *PlayerLable);
 			while (back_graund(Player, PlayerPos, Map)) {
-				battle_ground(Player, *PlayerLable, PlayerPos, Map, *Monster, MonsterList, ItemList);
+				if (Map[PlayerPos->y][PlayerPos->x] == '2' && rand() % 3 == 2)                  // 몬스터 조우
+					battle_ground(Player, *PlayerLable, *Monster, MonsterList, ItemList);
+				else if (Map[PlayerPos->y][PlayerPos->x] == '3')
+					store_ground(Player, ItemList, SkillList);
 				if (Player->life == 0) break;
 			}
 			break;
@@ -29,8 +32,7 @@ int main() {
 	}
 	system("cls");
 	printf("바이바이~");
-	Sleep(2000);
-	getchar();
+	Sleep(1500);
 	freeAll(Player, PlayerLable, Monster, MonsterList, SkillList, ItemList, PlayerPos);
 	return 0;
 }

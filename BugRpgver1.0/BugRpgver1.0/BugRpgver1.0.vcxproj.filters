@@ -71,6 +71,9 @@
     <ClCompile Include="PlayerSkill.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="store.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h">
@@ -107,6 +110,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="PlayerSkill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="store.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

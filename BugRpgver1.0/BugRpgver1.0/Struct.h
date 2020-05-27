@@ -2,6 +2,8 @@
 #define NAME_SIZE 32
 #define MAP_SIZE 64
 #define MAXIMUM 256
+#define ITEMSIZE 10
+#define SKILLSIZE 6
 #define KI (char)_getch()
 
 typedef struct _tagStatus {

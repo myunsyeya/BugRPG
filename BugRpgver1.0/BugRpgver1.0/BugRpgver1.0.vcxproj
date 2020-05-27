@@ -141,6 +141,7 @@
     <ClCompile Include="Player.c" />
     <ClCompile Include="PlayerSkill.c" />
     <ClCompile Include="Skill.c" />
+    <ClCompile Include="store.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSkill.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="store.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -41,7 +41,9 @@ void PrintMapTotal(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 			else if (map[j][i] == '0')						// 벽
 				printf("■");
 			else if (map[j][i] == '2')						// 몬스터 스폰
-				printf("  ");
+				printf("□");
+			else if (map[i][j] == '3')                      // 상점
+				printf("▣");
 		}
 		printf("\n");
 	}
@@ -62,6 +64,8 @@ void PrintMapByPlayer(char map[MAP_SIZE][MAP_SIZE], POS playerpos)
 				printf("■");
 			else if (map[i][j] == '2')						// 몬스터 스폰
 				printf("□");
+			else if (map[i][j] == '3')                      // 상점
+				printf("▣");
 			else
 				printf("  ");
 		}
