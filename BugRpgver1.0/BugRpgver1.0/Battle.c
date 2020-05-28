@@ -112,14 +112,14 @@ void LevelUP(PLAYER* player, PLAYER Lable)                                      
 	{
 		int exp = 0;
 		int gold = 0;
-		for (; player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp; exp = player->PlayerStatus[player->Level].Exp - player->PlayerStatus[player->Level].Max_Exp)
+		for (exp = player->PlayerStatus[player->Level].Exp - player->PlayerStatus[player->Level].Max_Exp; player->PlayerStatus[player->Level].Exp > player->PlayerStatus[player->Level].Max_Exp; exp = player->PlayerStatus[player->Level].Exp - player->PlayerStatus[player->Level].Max_Exp)
 		{
 			gold = player->PlayerStatus[player->Level].Gold;
 			puts("\nLevel Up!");
 			player->Level++;
 			CheckStatus(player, Lable, player->Level);
-			exp = player->PlayerStatus[player->Level].Exp;
-			player->PlayerStatus[player->Level].Gold;
+			player->PlayerStatus[player->Level].Exp = exp;
+			player->PlayerStatus[player->Level].Gold = gold;
 			if (player->Level % 4 == 0)
 			{
 				int i = rand() % 5;
